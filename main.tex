@@ -8,8 +8,26 @@
 
 % Useful packages
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumerate}
 \usepackage{graphicx}
+\usepackage{physics}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+% definition, proposition, lemma, theorem, corollary, remark, fact
+\usepackage{amsthm}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}[subsection]
+\newtheorem{prop}[dfn]{Proposition}
+\newtheorem{lem}[dfn]{Lemma}
+\newtheorem{thm}[dfn]{Theorem}
+\newtheorem{cor}[dfn]{Corollary}
+\newtheorem{rem}[dfn]{Remark}
+\newtheorem{fact}[dfn]{Fact}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
 
 \title{確率解析勉強会第１回}
 \author{中津陽}
@@ -21,13 +39,49 @@
  この資料は、「」著「」を元に、確率解析の学習を行うために作成された。
 \end{abstract}
 
-\section{無限確率空間}
+\section{一般的な確率論}
+\subsection{無限確率空間}
  なぜ$\sigma$-加法族を考える必要があるか。 
 
+\begin{dfn}[$\sigma$-加法族]
+    \label{dfn:sigma-alg}
+    $\Omega \neq \phi$, $\mathcal{F} \subset 2^{\Omega}$とする。
+    $\mathcal{F}$が$\sigma$加法族であるとは、次を満たすことである。
+    \begin{enumerate}[(i)]
+        \item $\phi \in \mathcal{F}$
+        \item $A \in \mathcal{F} \Rightarrow A^{C} \in \mathcal{F}$ 
+        \item 
+            $
+            \forall n \in \mathbb{N} \qty[ A_n \in \mathcal{F} ] \Rightarrow \bigcup_{n=1}^{\infty} A_n \in \mathcal{F}
+            $
+    \end{enumerate}
+\end{dfn}
 
+Definition\ref{dfn:sigma-alg}(i), (iii)より、$A \in \mathcal{F} \land B \in \mathcal{F} \Rightarrow A \cup B \in \mathcal{F}$が成立する。
+\begin{proof}
+    集合列$A, B, \phi, \phi, \dots$を考える。
+    ただし、$A, B \in \mathcal{F}$である。
+    Definition\ref{dfn:sigma-alg}(i)より、$\phi \in \mathcal{F}$である。
+    したがって、Definition\ref{dfn:sigma-alg}(iii)より、
+    $A \cup B = A \cup B \cup \phi \cup \phi \dots \in \mathcal{F}$
+    が言える。
+\end{proof}
 
+同様にして、ある自然数$N$に対し、$\forall n \in \{1,2,\dots,N \} \qty[A_n \in \mathcal{F}] \Rightarrow \bigcup_{n=1}^{N} A_n \in \mathcal{F}$が成立する。
+\begin{proof}
+    $N=k$において、題意が満たされるものと仮定する。
+    したがって、$\bigcup_{n=1}^{k}A_n \in \mathcal{F}$である。
+    $A_{k+1} \in \mathcal{F}$をとる。
+    % この時、$\forall n \in \{1,2,\dots,k,k+1 \} \qty[A_n \in \mathcal{F}]$は真である。
+    この時、上述の証明より$\bigcup_{n=1}^{k+1}A_n = \bigcup_{n=1}^{k}A_n \cup A_{k+1} \in \mathcal{F}$
+    $N=1$の場合は自明なので、以上から再起的に題意は示された。
+\end{proof}
 
- 
+Definition\ref{dfn:sigma-alg}(ii),(iii)より、
+$\forall n \in \mathbb{N} [A_n \in \mathcal{F}] \Rightarrow \bigcap_{n=1}^{\infty} A_n \in \mathcal{F}$が示される。
+\begin{proof}
+    
+\end{proof}
 
 
 \end{document}
